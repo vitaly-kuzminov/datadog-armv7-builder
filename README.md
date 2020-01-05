@@ -16,15 +16,16 @@ Clone the repository and run the following `docker` (or `podman`) commands:
 ```bash
 $ git clone git@github.com:palazzem/datadog-armv7-builder.git && cd datadog-armv7-builder
 $ docker build -t dd-agent-armv7-builder:latest .
-$ docker run -ti --rm -v $(pwd)/out:/go/src/github.com/DataDog/datadog-agent/target dd-agent-armv7-builder:latest
+$ docker run --rm -v $(pwd)/out:/go/src/github.com/DataDog/datadog-agent/target dd-agent-armv7-builder:latest
 ```
 
 After the process finishes, you can find the Agent build inside the `out/` folder.
 
-## Pre-built Agents
+## Automatic Builds
 
-You can find some releases I've prepare for my usage in the [Release page][3].
+Every time a commit lands on `master`, a [GitHub action is executed][3] to build the
+container, and later the package. The output of the build is available as an artifact.
 
 [1]: https://github.com/datadog/datadog-agent
 [2]: https://docs.datadoghq.com/agent/
-[3]: https://github.com/palazzem/datadog-armv7-builder/releases
+[3]: https://github.com/palazzem/datadog-armv7-builder/actions

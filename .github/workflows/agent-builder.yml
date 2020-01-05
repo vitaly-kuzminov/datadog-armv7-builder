@@ -1,0 +1,18 @@
+name: Agent ARMv7 Builder
+on:
+  push:
+    branches:
+      - master  # Build the package only on `master`
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare the build environment
+      run: docker build -t dd-agent-armv7-builder:latest .
+    - name: Build the package for ARMv7
+      run: docker run --rm -v $(pwd)/out:/go/src/github.com/DataDog/datadog-agent/target dd-agent-armv7-builder:latest
+    - uses: actions/upload-artifact@v1
+      with:
+        name: agent-armv7-package
+        path: out/
