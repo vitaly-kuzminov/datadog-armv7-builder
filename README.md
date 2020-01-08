@@ -29,3 +29,9 @@ container, and later the package. The output of the build is available as an art
 [1]: https://github.com/datadog/datadog-agent
 [2]: https://docs.datadoghq.com/agent/
 [3]: https://github.com/palazzem/datadog-armv7-builder/actions
+
+## Post Build
+
+For post-build steps, you can [check this Gist][4].
+
+[4]: https://gist.github.com/palazzem/250286637fea158ec1f89fcb10d40973
