@@ -1,9 +1,9 @@
 FROM golang:1.13.5
 
 ENV VERSION 7.16.0
-ENV GOOS linux
 ENV GOARCH arm
 ENV GOARM 7
+ENV GOOS linux
 ENV AGENT_FOLDER /go/src/github.com/DataDog/datadog-agent
 
 # Agent checkout to $VERSION
@@ -22,9 +22,13 @@ RUN cd $AGENT_FOLDER && \
   invoke deps && \
   mkdir target
 
+# Set build tags: https://github.com/DataDog/datadog-agent/blob/master/tasks/agent.py#L68-L77
+# It doesn't change pulled dependencies, so it's fine to reuse the cache above
+ENV BUILD_TAGS cpu,disk,io,load,memory,network,ntp,uptime,docker
+
 # Running the container means building the `puppy` Agent
 CMD cd $AGENT_FOLDER && \
-  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke agent.build --puppy && \
+  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke agent.build --build-include=$BUILD_TAGS && \
   mv bin/agent/dist bin/agent/datadog-agent && \
   mkdir bin/agent/dist -p && \
   mv bin/agent/datadog-agent/templates bin/agent/dist && \
