@@ -26,4 +26,7 @@ RUN cd $AGENT_FOLDER && \
 CMD cd $AGENT_FOLDER && \
   GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke agent.build --puppy && \
   mv bin/agent/dist bin/agent/datadog-agent && \
+  mkdir bin/agent/dist -p && \
+  mv bin/agent/datadog-agent/templates bin/agent/dist && \
+  mv bin/agent/datadog-agent/views bin/agent/dist && \
   tar cvf ./target/agent-armv7-$VERSION.tar.gz -C bin/agent/ .
