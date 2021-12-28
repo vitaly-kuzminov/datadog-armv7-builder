@@ -2,7 +2,7 @@ name: Agent ARMv7 Builder
 on:
   push:
     branches:
-      - master  # Build the package only on `master`
+      - develop  # Build the package only on `master`
 jobs:
   build:
     runs-on: ubuntu-latest
