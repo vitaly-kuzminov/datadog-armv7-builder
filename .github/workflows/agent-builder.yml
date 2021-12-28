@@ -4,7 +4,11 @@ on:
     branches:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       - develop  # Build the package only on `master`
+=======
+      - master  # Build the package only on `master`
+>>>>>>> parent of e1b4ba9 (Archiving the repository. Datadog supports officially the IoT Agent: https://docs.datadoghq.com/agent/iot/?tab=deb)
 =======
       - master  # Build the package only on `master`
 >>>>>>> parent of e1b4ba9 (Archiving the repository. Datadog supports officially the IoT Agent: https://docs.datadoghq.com/agent/iot/?tab=deb)
