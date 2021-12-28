@@ -2,7 +2,11 @@ name: Agent ARMv7 Builder
 on:
   push:
     branches:
+<<<<<<< HEAD
       - develop  # Build the package only on `master`
+=======
+      - master  # Build the package only on `master`
+>>>>>>> parent of e1b4ba9 (Archiving the repository. Datadog supports officially the IoT Agent: https://docs.datadoghq.com/agent/iot/?tab=deb)
 jobs:
   build:
     runs-on: ubuntu-latest
