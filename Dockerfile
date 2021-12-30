@@ -9,13 +9,13 @@ ENV AGENT_FOLDER /go/src/github.com/DataDog/datadog-agent
 # Agent checkout to $VERSION
 RUN git clone https://github.com/DataDog/datadog-agent.git $AGENT_FOLDER -b $VERSION
 
-# Install build dependencies (NOTE: still Python 2)
+# Install build dependencies
 RUN apt-get update && apt-get install -y \
     python3-pip \
     cmake && \
   rm -rf /var/lib/apt/lists/* && \
   curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && \
-  cd $AGENT_FOLDER && pip install -r requirements.txt
+  cd $AGENT_FOLDER && pip3 install -r requirements.txt
 
 # Pull Agent dependencies
 RUN cd $AGENT_FOLDER && \
