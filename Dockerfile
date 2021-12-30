@@ -1,4 +1,4 @@
-FROM golang:1.16.0
+FROM golang:1.15.0
 
 ENV VERSION 6.32.4
 ENV GOARCH arm
