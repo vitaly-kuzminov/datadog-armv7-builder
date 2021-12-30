@@ -11,7 +11,7 @@ RUN git clone https://github.com/DataDog/datadog-agent.git $AGENT_FOLDER -b $VER
 
 # Install build dependencies (NOTE: still Python 2)
 RUN apt-get update && apt-get install -y \
-    python-pip \
+    python3-pip \
     cmake && \
   rm -rf /var/lib/apt/lists/* && \
   curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && \
