@@ -1,7 +1,7 @@
 FROM golang:1.16.7
 
 ENV VERSION 6.32.4
-ENV AGENT_FLAVOR iot-agent
+ENV AGENT_FLAVOR datadog-iot-agent
 ENV GOARCH arm
 ENV GOARM 7
 ENV GOOS linux
