@@ -27,7 +27,7 @@ RUN cd $AGENT_FOLDER && \
 
 # Running the container means building the `puppy` Agent
 CMD cd $AGENT_FOLDER && \
-  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke agent.build --flavor iot && \
+  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke -e agent.build --flavor iot-agent && \
   mv bin/agent/dist bin/agent/datadog-agent && \
   mkdir bin/agent/dist -p && \
   mv bin/agent/datadog-agent/templates bin/agent/dist && \
