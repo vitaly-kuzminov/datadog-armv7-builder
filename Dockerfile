@@ -1,6 +1,7 @@
 FROM golang:1.16.7
 
 ENV VERSION 6.32.4
+ENV AGENT_FLAVOR iot-agent
 ENV GOARCH arm
 ENV GOARM 7
 ENV GOOS linux
@@ -27,7 +28,7 @@ RUN cd $AGENT_FOLDER && \
 
 # Running the container means building the `puppy` Agent
 CMD cd $AGENT_FOLDER && \
-  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke -e agent.build --flavor iot-agent && \
+  GOOS=$GOOS GOARCH=$GOARCH GOARM=$GOARM invoke -e agent.build && \
   mv bin/agent/dist bin/agent/datadog-agent && \
   mkdir bin/agent/dist -p && \
   mv bin/agent/datadog-agent/templates bin/agent/dist && \
